@@ -1,11 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import usewindowsize from './hook';
-
 import './style.css';
-
+import { BiBookmarkPlus, BiCheckDouble } from 'react-icons/bi';
 export const App: FC<{ name: string }> = ({ name }) => {
   const [post, setpost] = useState(null);
-
 
   const [quantity, setquantity] = useState({
     price: 1,
@@ -45,21 +43,21 @@ export const App: FC<{ name: string }> = ({ name }) => {
     };
   }, [quantity]);
 
-
   const size = usewindowsize();
   return (
     <div>
-      <h1>size of window is {size}</h1>
+      <h1>
+        size of window is {size} <br /> <BiBookmarkPlus />
+      </h1>
       <h1>{post?.title}</h1>
       <p>{post?.description}</p>
       {post &&
         post?.images.map((i, index) => {
-            return(
-          <img src={i} alt="" key={index} width="200px" height="" />)
-      })}
+          return <img src={i} alt="" key={index} width="200px" height="" />;
+        })}
 
       <button className="p-2" onClick={handleclick}>
-        add
+        add <BiCheckDouble className="font1" />
       </button>
       <p>total price for {quantity.name}</p>
 
